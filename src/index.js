@@ -132,7 +132,7 @@ const translate = token => {
 	return translationForLanguage
 }
 
-mapboxGl.accessToken = 'pk.eyJ1IjoianVsaXVzdGUiLCJhIjoiY2t2N3UyeDZ2MjdqZjJvb3ZmcWNyc2QxbSJ9.oB7xzSTcmeDMcl4DhjSl0Q'
+mapboxGl.accessToken = 'pk.eyJ1IjoiY3ViZXNtaSIsImEiOiJjbDZwOWF0bnowaWRmM2Nxb2o3amtpNTZlIn0.PYqEFB5qqL8EOFBbfdudGA'
 const map = new mapboxGl.Map({
 	container: 'map',
 	style: 'mapbox://styles/mapbox/light-v10',
@@ -229,7 +229,7 @@ const selectLocation = async (id, local) => {
 					dbUrlGerman: r.dbUrlGerman,
 					dbUrlEnglish: r.dbUrlEnglish,
 				},
-			})), x => (-1) * x.properties.duration)
+			})), x => (-1) * x.properties.durationMinutes)
 			geojson.features = features
 			geojson.features.push(stationFeature)
 
@@ -260,12 +260,71 @@ const selectLocation = async (id, local) => {
 						['number', ['get', 'duration']],
 						-1, durationCategoryColour(-1), // unknown duration
 						0, durationCategoryColour(0), // 0
-						1, durationCategoryColour(1), // < 1h
-						2, durationCategoryColour(2), // 1h-2h
-						3, durationCategoryColour(3), // 2h-4h
-						4, durationCategoryColour(4), // 4h-8h
-						5, durationCategoryColour(5), // 8h-16h
-						6, durationCategoryColour(6), // > 16h
+						1, durationCategoryColour(1),
+						2, durationCategoryColour(2),
+						3, durationCategoryColour(3),
+						4, durationCategoryColour(4),
+						5, durationCategoryColour(5),
+						6, durationCategoryColour(6),
+						7, durationCategoryColour(7),
+						8, durationCategoryColour(8),
+						9, durationCategoryColour(9),
+						10, durationCategoryColour(10),
+						11, durationCategoryColour(11),
+						12, durationCategoryColour(12),
+						13, durationCategoryColour(13),
+						14, durationCategoryColour(14),
+						15, durationCategoryColour(15),
+						16, durationCategoryColour(16),
+						17, durationCategoryColour(17),
+						18, durationCategoryColour(18),
+						19, durationCategoryColour(19),
+						20, durationCategoryColour(20),
+						21, durationCategoryColour(21),
+						22, durationCategoryColour(22),
+						23, durationCategoryColour(23),
+						24, durationCategoryColour(24),
+						25, durationCategoryColour(25),
+						26, durationCategoryColour(26),
+						27, durationCategoryColour(27),
+						28, durationCategoryColour(28),
+						29, durationCategoryColour(29),
+						30, durationCategoryColour(30),
+						31, durationCategoryColour(31),
+						32, durationCategoryColour(32),
+						33, durationCategoryColour(33),
+						34, durationCategoryColour(34),
+						35, durationCategoryColour(35),
+						36, durationCategoryColour(36),
+						37, durationCategoryColour(37),
+						38, durationCategoryColour(38),
+						39, durationCategoryColour(39),
+						40, durationCategoryColour(40),
+						41, durationCategoryColour(41),
+						42, durationCategoryColour(42),
+						43, durationCategoryColour(43),
+						44, durationCategoryColour(44),
+						45, durationCategoryColour(45),
+						46, durationCategoryColour(46),
+						47, durationCategoryColour(47),
+						48, durationCategoryColour(48),
+						49, durationCategoryColour(49),
+						50, durationCategoryColour(50),
+						51, durationCategoryColour(51),
+						52, durationCategoryColour(52),
+						53, durationCategoryColour(53),
+						54, durationCategoryColour(54),
+						55, durationCategoryColour(55),
+						56, durationCategoryColour(56),
+						57, durationCategoryColour(57),
+						58, durationCategoryColour(58),
+						59, durationCategoryColour(59),
+						60, durationCategoryColour(60),
+						61, durationCategoryColour(61), // 1h-2h
+						62, durationCategoryColour(62), // 2h-4h
+						63, durationCategoryColour(63), // 4h-8h
+						64, durationCategoryColour(64), // 8h-16h
+						65, durationCategoryColour(65), // > 16h
 					],
 					'circle-stroke-color': '#333',
 					'circle-stroke-width': 0.5,
@@ -305,9 +364,8 @@ const selectLocation = async (id, local) => {
 
 				let durationElement = ''
 				if (Number.isInteger(durationMinutes)) {
-					const durationColour = durationCategoryColour(duration)
 					const formattedDuration = Duration.fromObject({ minutes: durationMinutes }).toFormat('h:mm')
-					durationElement = ` <b style="color: ${durationColour};">${formattedDuration}h</b>`
+					durationElement = ` <b">${formattedDuration}h</b>`
 				}
 
 				popupOpenSince = new Date()
